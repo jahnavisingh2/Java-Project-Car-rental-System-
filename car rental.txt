@@ -1,0 +1,208 @@
+package assig9;
+import java.util.*;
+class car
+{
+	Scanner sc = new Scanner(System.in);
+	String ptime;
+	float deposit;
+	int rate,initialrate,days;
+	void accept()
+	{
+		System.out.println("Enter pick-up time :");
+		ptime = sc.nextLine();
+	}
+	void input()
+	{
+		System.out.println("Enter name : ");
+		String name = sc.nextLine();
+		System.out.println("Enter address : ");
+		String address = sc.nextLine();
+		System.out.println("Enter license number : ");
+		String lno = sc.nextLine();
+		System.out.println("Enter phone number : ");
+		String phno = sc.nextLine();
+	}
+}
+class fourseat extends car
+{
+	void accept()
+	{
+		super.accept();
+		super.input();
+		System.out.println("Enter the number of days you need car : ");
+		int days  = sc.nextInt();
+		System.out.println("The amount to be deposited for one day is Rs 1000");
+		deposit = days * 1000;
+		System.out.println("Thus total amount to be deposited is : "+deposit);
+		
+	}
+	void input()
+	{
+		
+		initialrate = 500;
+		System.out.println("The rate per km is Rs 25: ");
+		System.out.println("Enter the distance you want to travel : ");
+		int dist = sc.nextInt();
+		int amt = dist * 25 + initialrate;
+		System.out.println("The amount to be paid is "+amt);
+	
+	}
+}class sevenseat extends car
+{
+	void accept()
+	{
+		super.accept();
+		super.input();
+		System.out.println("Enter the number of days you need car : ");
+		int days  = sc.nextInt();
+		System.out.println("The amount to be deposited for one day is Rs 1500");
+		deposit = days * 1500;
+		System.out.println("Thus total amount to be deposited is : "+deposit);
+	}
+	void input()
+	{
+		initialrate = 600;
+		System.out.println("The rate per km is Rs 35: ");
+		System.out.println("Enter the distance you want to travel : ");
+		int dist = sc.nextInt();
+		int amt = dist * 35 + initialrate;
+		System.out.println("The amount to be paid is "+amt);
+	}
+}
+class jeep extends car
+{
+	void accept()
+	{
+		super.accept();
+		super.input();
+		System.out.println("Enter the number of days you need car : ");
+		int days  = sc.nextInt();
+		System.out.println("The amount to be deposited for one day is Rs 2000");
+		deposit = days * 2000;
+		System.out.println("Thus total amount to be deposited is : "+deposit);
+	}
+	void input()
+	{
+		initialrate = 700;
+		System.out.println("The rate per km is Rs 40 : ");
+		System.out.println("Enter the distance you want to travel : ");
+		int dist = sc.nextInt();
+		int amt = dist * 40 + initialrate;
+		System.out.println("The amount to be paid is "+amt);
+	}
+}
+class van extends car
+{
+	void accept()
+	{
+		super.accept();
+		super.input();
+		System.out.println("Enter the number of days you need car : ");
+		int days  = sc.nextInt();
+		System.out.println("The amount to be deposited for one day is Rs 2500");
+		deposit = days * 2500;
+		System.out.println("Thus total amount to be deposited is : "+deposit);
+	}
+	void input()
+	{
+		initialrate = 800;
+		System.out.println("The rate per km is Rs 45: ");
+		System.out.println("Enter the distance you want to travel : ");
+		int dist = sc.nextInt();
+		int amt = dist * 45 + initialrate;
+		System.out.println("The amount to be paid is "+amt);
+	}
+}
+
+public class Main 
+{
+
+	public static void main(String[] args)
+	{
+		
+			Scanner sc = new Scanner(System.in);
+		
+			ArrayList<String>names = new ArrayList<>();
+			
+			names.add("Pune");
+			names.add("Mumbai");
+			names.add("Hyderabad");
+			names.add("Bengaluru");
+			names.add("Kolkata");
+			
+			System.out.println("We have our outlets in :"+names);
+			
+			
+			System.out.println("Enter your pick up location : ");
+			String plocation = sc.nextLine();
+			int flag = 0;
+			for(int i = 0; i < 5; i++)
+			{
+				String pick = names.get(i);
+				if(plocation.equalsIgnoreCase(pick))
+				{
+					
+					flag = 1;
+					break;
+				}
+			}
+			if(flag==1)
+			{
+				System.out.println("Great!! You may proceed : ");
+			}
+			else 
+			{
+				System.out.println("Sorry we dont have outlets in that location!!");
+			}
+			
+			System.out.println("Enter your age : ");
+			int age = sc.nextInt();
+			if(age<18)
+			{
+				System.out.println(" you are under-age ");
+			}
+			else if(age>=18)
+			{
+			
+			ArrayList<String>types = new ArrayList<>();
+			types.add("1. Four - seater");
+			types.add("2. Seven - seater");
+			types.add("3. Jeep");
+			types.add("4. Van");
+			System.out.println(types);
+			
+			System.out.println("Enter your choice : ");
+			int choice = sc.nextInt();
+			
+			switch(choice)
+			{
+			case 1:
+					System.out.println("You have chosen Four - Seater : ");
+					fourseat fs = new fourseat();
+					fs.accept();
+					fs.input();
+				break;
+			case 2:
+					System.out.println("You have chosen Seven - Seater : ");
+					sevenseat ss = new sevenseat();
+					ss.accept();
+					ss.input();
+				break;
+			case 3:
+					System.out.println("You have chosen Jeep : ");
+					jeep j = new jeep();
+					j.accept();
+					j.input();
+				break;
+			case 4:
+					System.out.println("You have chosen Van : ");
+					van v = new van();
+					v.accept();
+					v.input();
+				break;
+			}
+			}
+			
+	}
+
+}
